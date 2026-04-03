@@ -8,7 +8,10 @@ void setup() {
   Serial.begin(SERIAL_BAUD_RATE);
   dht.begin();
 
-  Serial.println("DHT11 Weather Monitor");
+  Serial.println();
+  Serial.println("Booting DHT11 Weather Monitor...");
+  Serial.println("Serial dashboard ready.");
+  Serial.println();
 }
 
 void loop() {
@@ -16,22 +19,11 @@ void loop() {
   float temperature = dht.readTemperature();
 
   if (isnan(humidity) || isnan(temperature)) {
-    Serial.println("Failed to read from DHT11 sensor!");
+    Serial.println("[Sensor Error] Failed to read from DHT11 sensor.");
     delay(READ_INTERVAL_MS);
     return;
   }
 
-  Serial.print("Temperature: ");
-  Serial.print(temperature);
-  Serial.println(" C");
-
-  Serial.print("Humidity: ");
-  Serial.print(humidity);
-  Serial.println(" %");
-
-  Serial.print("Weather: ");
-  Serial.println(getWeatherStatus(temperature));
-
-  Serial.println("----------------------");
+  printWeatherDashboard(temperature, humidity);
   delay(READ_INTERVAL_MS);
 }

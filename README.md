@@ -1,6 +1,6 @@
 # Weather Monitor with DHT11
 
-This is a simple Arduino project that reads temperature and humidity from a DHT11 sensor and displays the values in the Serial Monitor.
+This is an Arduino project that reads temperature and humidity from a DHT11 sensor and shows the values in a cleaner Serial Monitor dashboard.
 
 ## Project Files
 
@@ -36,9 +36,11 @@ The project:
 
 - reads humidity from the DHT11
 - reads temperature in Celsius
-- prints the values to the Serial Monitor
+- prints a compact serial dashboard
 - uses a helper file to decide the weather status
-- shows a simple weather status:
+- labels humidity as `Dry`, `Comfortable`, or `Sticky`
+- estimates a simple `Feels Like` temperature from humidity
+- shows a weather status:
   - `Hot` if temperature is above 30 C
   - `Cool` if temperature is below 20 C
   - `Normal` otherwise
@@ -63,9 +65,16 @@ You can edit `config.h` to change:
 ## Output Example
 
 ```text
-DHT11 Weather Monitor
-Temperature: 28.00 C
-Humidity: 65.00 %
-Weather: Normal
-----------------------
+Booting DHT11 Weather Monitor...
+Serial dashboard ready.
+
++--------------------------------------+
+|        WEATHER MONITOR DASHBOARD     |
++--------------------------------------+
+| Temperature : 28.0 C
+| Humidity    : 65.0 %
+| Condition   : Normal
+| Air Feel    : Comfortable
+| Feels Like  : 21.0 C
++--------------------------------------+
 ```
